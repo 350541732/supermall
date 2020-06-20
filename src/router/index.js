@@ -12,7 +12,7 @@ const Profile = () =>
     //安装插件
 Vue.use(VueRouter)
 
-const routers = [{
+const routes = [{
         path: '',
         redirect: '/home'
     },
@@ -34,7 +34,8 @@ const routers = [{
     },
 ]
 const router = new VueRouter({
-        routers,
+        //名称一定的写对 不然无法实现跳转
+        routes: routes,
         mode: 'history'
     })
     //导出router
