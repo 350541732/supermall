@@ -1,6 +1,5 @@
 <template>
 <div>  
-  <h2>首页</h2>
   <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
   </div>
 
@@ -22,8 +21,8 @@ export default {
   created() {
     //1.请求多个数据
     getHomeMultidata().then(res => {
-      this.banner = res.data.banner;
-      this.recommend = res.data.recommend;
+      this.banner = res.data.banner.list;
+      this.recommend = res.data.recommend.list;
     })
   }
 }
