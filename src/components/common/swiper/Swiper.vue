@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import func from '../../../../vue-temp/vue-editor-bridge'
+
 export default {
   name: 'Swiper',
   props: {
@@ -55,13 +55,13 @@ export default {
     * 定时器操作
     */
    startTimer: function() {
-     this.playTImer = window.setInterval(() => {
+     this.playTimer = window.setInterval(() => {
        this.currentIndex++;
        this.scrollContent(-this.currentIndex * this.totalWidth);
      }, this.interval);
    },
    stopTimer: function () {
-     window.clearInterval(this.playTImer);
+     window.clearInterval(this.playTimer);
    },
    /**
     * 滚动到正确的位置
@@ -122,6 +122,8 @@ export default {
         swiperEl.insertBefore(cloneLast,sliderEls[0]);
         swiperEl.appendChild(cloneFirst);
         this.totalWidth = swiperEl.offsetWidth;
+        console.log('totalWidth');
+        console.log(this.totalWidth);
         this.swiperStyle = swiperEl.style;
         //4.让swiper元素，显示第一个(目前显示的是前面添加的最后一个元素)
         this.setTransform(-this.totalWidth);
