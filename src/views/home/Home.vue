@@ -7,10 +7,8 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
     <tab-control class="tab-control" :titles="['流行','新款','精选']"></tab-control>
+    <goods-list :goods="goods['pop'].list"></goods-list>
 
-    <ul v-for="(item, index) in 100" :key="index">
-      <li>AAA</li>
-    </ul>
   </div>
 </template>
 <script>
@@ -20,6 +18,7 @@ import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 import TabControl from "components/content/tabControl/TabControl";
+import GoodsList from "components/content/goods/GoodsList"
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 
@@ -30,7 +29,8 @@ export default {
     HomeSwiper,
     RecommendView,
     FeatureView,
-    TabControl
+    TabControl,
+    GoodsList
   },
   data() {
     return {
@@ -86,5 +86,6 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+  z-index: 9;
 }
 </style>
