@@ -3,11 +3,21 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <home-swiper :banner="banner"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
-    <goods-list :goods="showGoods"></goods-list>
+
+    <!--    <scroll class="content">-->
+<!--      <home-swiper :banner="banner"></home-swiper>-->
+<!--      <recommend-view :recommends="recommends"></recommend-view>-->
+<!--      <feature-view></feature-view>-->
+<!--      <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>-->
+<!--      <goods-list :goods="showGoods"></goods-list>-->
+<!--    </scroll>-->
+    <scroll class="home-scroll" ref="scroller" :probeType="3" @scroll="getPosition">
+            <home-swiper :banner="banner"></home-swiper>
+            <recommend-view :recommends="recommends"></recommend-view>
+            <feature-view></feature-view>
+            <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
+            <goods-list :goods="showGoods"></goods-list>
+    </scroll>
   </div>
 </template>
 <script>
@@ -21,6 +31,8 @@ import GoodsList from "components/content/goods/GoodsList";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 
+import Scroll from "components/common/scroll/Scroll"
+
 export default {
   name: "Home",
   components: {
@@ -30,6 +42,7 @@ export default {
     FeatureView,
     TabControl,
     GoodsList,
+    Scroll
   },
   data() {
     return {
@@ -97,6 +110,7 @@ export default {
 <style scoped>
 #home {
   padding-top: 44px;
+  height: 100vh;
 }
 
 .home-nav {
@@ -112,5 +126,11 @@ export default {
   position: sticky;
   top: 44px;
   z-index: 9;
+}
+
+.content {
+  /*height: calc(100%);*/
+  overflow: hidden;
+  height: 300px;
 }
 </style>
